@@ -2,7 +2,7 @@
 
 $pay = new Bitexpress;
 $pay->rmbPrice('CNY',695); //商户入金数字币报价（人民币）
-//$pay -> pay('CNY',100);  //获取入金跳转链接
+//$pay -> pay('CNY',100,'张三');  //获取入金跳转链接
 //$pay -> orderQuery('PAY1600328923');  //查询入金订单状态
 //$pay -> withdrawal();   //申请法币出金
 //$pay -> withdrawalHistory(); //法币出金历史记录
@@ -52,19 +52,20 @@ class Bitexpress{
      * @param $closeCurrency
      * @param $amount
      */
-    public function pay($closeCurrency,$amount){
+    public function pay($closeCurrency,$amount,$realName){
 		$orderNo = time().rand(1,100);
 		$timestamp = time();
        $param = array(
            'p1' => $amount,
            'p2' => $this->mch_no,
            'p3' => $orderNo,
-		   'p4' => $closeCurrency,
+	   'p4' => $closeCurrency,
+	   'p5' => $realName,
            'timestamp' => $timestamp
        );
 	   $str = $amount.'&'.$this->mch_no.'&'.$orderNo.'&'.$timestamp;
         $url = $this->into_url;
-        $url .= '?p1='.$param['p1'].'&p2='.$param['p2'].'&p3='.$param['p3'].'&timestamp='.$param['timestamp'];
+        $url .= '?p1='.$param['p1'].'&p2='.$param['p2'].'&p3='.$param['p3'].'&p4='.$param['p4'].'&p5='.$param['p5'].'&timestamp='.$param['timestamp'];
         $rlt = $this->httpGET($url,$str);
         var_dump($rlt);
         //{"code":200,"data":{"url":"https://pay.bitexpress.me?depositId=12"},"message":"success"}
