@@ -15,14 +15,14 @@ class Bitexpress{
     private $app_id = "41043343"; //商户帐号ID (APPID)<由 Bitexpress 分配,在app-API配置(pc商户后台--账户中心--商户信息) 中获取>
     private $mch_no = "9357"; //商户号 (UID)<由 Bitexpress 分配,在app-API配置(pc商户后台--账户中心--商户信息) 中获取>
     private $app_key ='73A8946D4ED1AD34ADA3F503601D3833';//密钥
-    private $into_url = "https://merchant-api-ssl.bitexpress.me/api/recharge/check/v2";  //入金地址
-	private $rmb_price_url = "https://merchant-api-ssl.bitexpress.me/api/recharge/convert/v1";//查询报价
-    private $order_query_url = "https://merchant-api-ssl.bitexpress.me/api/recharge/order/query"; //查询订单状态
-	private $withdrawal_url = "https://merchant-api-ssl.bitexpress.me/api/recharge/customer/withdrawal"; //法币出金申请
-    private $withdrawal_history_url = "https://merchant-api-ssl.bitexpress.me/api/recharge/customer/withdrawal/history"; //法币入金申请历史
-    private $withdrawal_delete_url = "https://merchant-api-ssl.bitexpress.me/api/recharge/customer/withdrawal/delete"; //删除未审核的法币出金申请记录
+    private $into_url = "https://merchant-api-ssl.bitexpress.cc/api/recharge/check/v2";  //入金地址
+	private $rmb_price_url = "https://merchant-api-ssl.bitexpress.cc/api/recharge/convert/v1";//查询报价
+    private $order_query_url = "https://merchant-api-ssl.bitexpress.cc/api/recharge/order/query"; //查询订单状态
+	private $withdrawal_url = "https://merchant-api-ssl.bitexpress.cc/api/recharge/customer/withdrawal"; //法币出金申请
+    private $withdrawal_history_url = "https://merchant-api-ssl.bitexpress.cc/api/recharge/customer/withdrawal/history"; //法币入金申请历史
+    private $withdrawal_delete_url = "https://merchant-api-ssl.bitexpress.cc/api/recharge/customer/withdrawal/delete"; //删除未审核的法币出金申请记录
 
-//curl -X GET -H "content-type:application/json" -H "access_key:8A42FADDD2397F4841B1F85C2C13094CAB152151" -H "app_id:41043343" https://merchant-api-ssl.bitexpress.me/api/recharge/convert/v1?timestamp=1609385362&p1=9357&p2=CNY&p3=695
+//curl -X GET -H "content-type:application/json" -H "access_key:8A42FADDD2397F4841B1F85C2C13094CAB152151" -H "app_id:41043343" https://merchant-api-ssl.bitexpress.cc/api/recharge/convert/v1?timestamp=1609385362&p1=9357&p2=CNY&p3=695
 
     /**
      * 商户入金数字币报价（人民币）
@@ -30,7 +30,7 @@ class Bitexpress{
      * @param $amount
      */
     public function rmbPrice($closeCurrency,$amount){
-        //curl -X GET -H "content-type:application/json" -H "access_key:8A42FADDD2397F4841B1F85C2C13094CAB152151" -H "app_id:41043343" https://merchant-api-ssl.bitexpress.me/api/recharge/convert/v1?timestamp=1609385362&p1=9357&p2=CNY&p3=695
+        //curl -X GET -H "content-type:application/json" -H "access_key:8A42FADDD2397F4841B1F85C2C13094CAB152151" -H "app_id:41043343" https://merchant-api-ssl.bitexpress.cc/api/recharge/convert/v1?timestamp=1609385362&p1=9357&p2=CNY&p3=695
 		$timestamp = time();
        $param = array(
            'p1' => $this->mch_no,
@@ -195,7 +195,7 @@ class Bitexpress{
      */
     function httpGET($url,$str) {
 
-        echo 'url:'.$url."</br>";    //请求地址和参数：https://merchant-api-ssl.bitexpress.me/api/recharge/check/v2?p1=100&p2=11082429&p3=1553155910&timestamp=1553155910
+        echo 'url:'.$url."</br>";    //请求地址和参数：https://merchant-api-ssl.bitexpress.cc/api/recharge/check/v2?p1=100&p2=11082429&p3=1553155910&timestamp=1553155910
 
         echo 'str:'.$str."</br>";   //加密前字符串：100&11082429&1553155910&1553155910
         if(empty($str)){
